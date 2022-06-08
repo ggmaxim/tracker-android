@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.users.NewUserActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarV1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/purple_200"
+            android:theme="@style/ToolBarStyle"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="USER MANAGEMENT"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content">
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            style="@style/AppTheme.App.TextInputLayout"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edEmail"
+                android:layout_width="match_parent"
+                android:hint="Input Username"
+                android:textColor="@color/colorInputText"
+                android:drawablePadding="16dp"
+                android:padding="16dp"
+                android:drawableStart="@drawable/ic_users"
+                android:inputType="text"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            style="@style/AppTheme.App.TextInputLayout"
+            android:layout_height="wrap_content"
+            app:passwordToggleContentDescription="password"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPassword"
+                android:layout_width="match_parent"
+                android:hint="Password"
+                android:drawablePadding="16dp"
+                android:padding="16dp"
+                android:drawableStart="@drawable/ic_backspace"
+                android:inputType="textPassword"
+                android:textColor="@color/colorInputText"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical">
+
+
+            <RadioGroup
+                android:id="@+id/rgExpiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbPCR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/pblue"
+                    android:text="1 Day"
+                    android:onClick="onRadioButtonClicked"
+                    android:theme="@style/RadioStyle" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbRapid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/pblue"
+                    android:text="3 Day"
+                    android:onClick="onRadioButtonClicked"
+                    android:theme="@style/RadioStyle" />
+
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbOneWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/pblue"
+                    android:text="1 Weeks"
+                    android:onClick="onRadioButtonClicked"
+                    android:theme="@style/RadioStyle" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rbOneMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/pblue"
+                    android:text="1 Monts"
+                    android:onClick="onRadioButtonClicked"
+                    android:theme="@style/RadioStyle" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnNewUser"
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="NEW USER"
+            android:layout_height="60dp"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
