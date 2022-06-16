@@ -3,6 +3,10 @@
     package="com.example.myapplication3">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +17,7 @@
         android:theme="@style/Theme.Retrofit"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.users.EditUserActivity"
+            android:name=".ui.tests.AddTestActivity"
             android:exported="false" />
         <activity
             android:name=".ui.users.NewUserActivity"
@@ -22,11 +26,26 @@
             android:name=".ui.DashboardActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.DashboardStaffActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DashboardTemporaryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.location.LocationProvider"
+            android:exported="false" />
+<!--        <service-->
+<!--            android:enabled="true"-->
+<!--            android:name=".service.MyService"-->
+<!--            android:exported="false"-->
+<!--            android:foregroundServiceType="location">-->
+<!--        </service>-->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

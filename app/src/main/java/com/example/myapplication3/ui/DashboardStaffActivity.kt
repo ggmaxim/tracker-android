@@ -3,33 +3,26 @@ package com.example.myapplication3.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.google.android.material.tabs.TabLayoutMediator
 import com.example.myapplication3.adapter.AllUsersAdapter
 import com.example.myapplication3.adapter.TabChoiceAdapter
-import com.example.myapplication3.network.apiclient.ApiClient
 import com.example.myapplication3.databinding.ActivityDashboardBinding
 import com.example.myapplication3.model.response.users.AllUsersResponse
+import com.example.myapplication3.network.apiclient.ApiClient
+import com.example.myapplication3.ui.tests.AddTestActivity
 import com.example.myapplication3.ui.users.NewUserActivity
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
-import android.view.MenuItem
-import android.R
-import androidx.appcompat.widget.SearchView
-import com.example.myapplication3.ui.tests.AddTestActivity
-import com.example.myapplication3.ui.users.EditUserActivity
-
-
-class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer {
+class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer {
 
     private lateinit var binding: ActivityDashboardBinding;
 
@@ -83,13 +76,13 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
     }
 
     override fun selectedAllConsumers(userBean: AllUsersResponse.UsersBean) {
-        startActivity(Intent(this, EditUserActivity::class.java).putExtra("user",userBean))
+        startActivity(Intent(this, AddTestActivity::class.java).putExtra("user",userBean))
     }
 
     private fun getAllUsers(){
 
 
-        val apiCall = ApiClient.getService().getAllUsers();
+        val apiCall = ApiClient.getService().getFilteredUsers("visitor");
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 
@@ -166,12 +159,12 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
             binding.tabLayout, binding.viewPager
         ) { tab, position ->
             when (position) {
-                0 -> tab.text = "Users"
+                0 -> tab.text = "Pacients"
                 1 -> tab.text = "COVID Positive"
-                2 -> tab.text = "Contacte"
+                2 -> tab.text = "Expired"
             }
         }.attach()
-        binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+        binding.tabLayout.setOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
                     0 ->{
@@ -183,7 +176,6 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
                     }
                     2 ->{
                         allUsersAdapter.setItems(filterContact())
-
                     }
                 }
             }

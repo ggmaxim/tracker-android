@@ -8,6 +8,9 @@ import com.example.myapplication3.ui.DashboardActivity
 import com.example.myapplication3.network.apiclient.ApiClient
 import com.example.myapplication3.databinding.ActivityLoginBinding
 import com.example.myapplication3.model.response.auth.LoginResponse
+import com.example.myapplication3.ui.DashboardStaffActivity
+import com.example.myapplication3.ui.DashboardTemporaryActivity
+import com.example.myapplication3.ui.location.LocationProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         apiCall.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if(response.isSuccessful && response.body()!!.isSuccess == 1) {
-                        startDashboardActivity(response.body()!!.email)
+                        startDashboardActivity(response.body()!!.role, response.body()!!.id)
                 }else {
                     showToast(response.body()!!.message)
                 }
@@ -74,8 +77,16 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun startDashboardActivity(email: String){
-        startActivity(Intent(this, DashboardActivity::class.java).putExtra("data",email))
+    private fun startDashboardActivity(role: String, id: String){
+        if (role == "admin") {
+            startActivity(Intent(this, DashboardActivity::class.java))
+        }
+        else if (role == "staff") {
+            startActivity(Intent(this, DashboardStaffActivity::class.java).putExtra("id",id))
+        } else {
+            startActivity(Intent(this, DashboardTemporaryActivity::class.java).putExtra("id",id))
+
+        }
         finish()
     }
 
