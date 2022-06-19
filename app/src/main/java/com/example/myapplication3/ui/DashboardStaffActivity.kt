@@ -15,7 +15,7 @@ import com.example.myapplication3.databinding.ActivityDashboardBinding
 import com.example.myapplication3.model.response.users.AllUsersResponse
 import com.example.myapplication3.network.apiclient.ApiClient
 import com.example.myapplication3.ui.tests.AddTestActivity
-import com.example.myapplication3.ui.users.NewUserActivity
+import com.example.myapplication3.ui.users.NewVisitorActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
@@ -28,7 +28,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
 
     private lateinit var allUsersAdapter: AllUsersAdapter;
 
-    private var adapter: TabChoiceAdapter? = null
+    private var adapter: TabChoiceAdapter? = null;
 
     private lateinit var allUsersResponse: List<AllUsersResponse.UsersBean>;
     private lateinit var positiveUsersResponse: List<AllUsersResponse.UsersBean>;
@@ -47,6 +47,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
         setUpNewTrainerRecyclerView();
         getAllUsers();
         getPositiveUsers();
+        getContactUsers();
         setTabData();
         setToolBar()
     }
@@ -72,7 +73,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
     }
 
     private fun showAddNewUser(){
-        startActivity(Intent(this, NewUserActivity::class.java))
+        startActivity(Intent(this, NewVisitorActivity::class.java))
     }
 
     override fun selectedAllConsumers(userBean: AllUsersResponse.UsersBean) {
@@ -82,7 +83,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
     private fun getAllUsers(){
 
 
-        val apiCall = ApiClient.getService().getFilteredUsers("visitor");
+        val apiCall = ApiClient.getService().getRoleUsers("visitor");
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 
@@ -111,7 +112,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
     private fun getPositiveUsers(){
 
 
-        val apiCall = ApiClient.getService().getPositiveUsers();
+        val apiCall = ApiClient.getService().getAllUsers(true, false);
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 
@@ -130,7 +131,7 @@ class DashboardStaffActivity : AppCompatActivity(), AllUsersAdapter.SelectedCons
     }
 
     private fun getContactUsers() {
-        val apiCall = ApiClient.getService().getContactUsers();
+        val apiCall = ApiClient.getService().getAllUsers( false, true);
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 

@@ -81,8 +81,8 @@ class LocationProvider : AppCompatActivity() {
             }
         }
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        // for getting the current location update after every 2 seconds with high accuracy
-        val locationRequest = LocationRequest().setInterval(2000).setFastestInterval(2000)
+        // for getting the current location update after every 200 seconds with high accuracy
+        val locationRequest = LocationRequest().setInterval(200000).setFastestInterval(200000)
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
         if (ActivityCompat.checkSelfPermission(
                 this,

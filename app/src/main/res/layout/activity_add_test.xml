@@ -112,7 +112,7 @@
 
 
             <RadioGroup
-                android:id="@+id/rgExpiryDate"
+                android:id="@+id/rgTest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

@@ -20,7 +20,13 @@
             android:name=".ui.tests.AddTestActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.users.EditUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.users.NewUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.users.NewVisitorActivity"
             android:exported="false" />
         <activity
             android:name=".ui.DashboardActivity"
@@ -32,7 +38,7 @@
             android:name=".ui.DashboardTemporaryActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.RegisterActivity"
+            android:name=".ui.auth.ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"

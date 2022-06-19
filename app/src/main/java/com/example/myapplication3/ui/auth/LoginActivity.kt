@@ -10,7 +10,6 @@ import com.example.myapplication3.databinding.ActivityLoginBinding
 import com.example.myapplication3.model.response.auth.LoginResponse
 import com.example.myapplication3.ui.DashboardStaffActivity
 import com.example.myapplication3.ui.DashboardTemporaryActivity
-import com.example.myapplication3.ui.location.LocationProvider
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,16 +27,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initData(){
-        binding.llNoAccount.setOnClickListener {
-            registerUser();
+        binding.llChangePassword.setOnClickListener {
+            changePassword();
         }
         binding.btnLogin.setOnClickListener {
             getInputs();
         }
     }
 
-    private fun registerUser(){
-        startActivity(Intent(this, RegisterActivity::class.java))
+    private fun changePassword(){
+        startActivity(Intent(this, ChangePasswordActivity::class.java))
         finish()
     }
 

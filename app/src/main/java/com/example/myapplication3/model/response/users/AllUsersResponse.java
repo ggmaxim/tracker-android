@@ -48,18 +48,18 @@ public class AllUsersResponse implements Serializable {
     }
 
     public static class UsersBean implements Serializable {
-        private String id;
+        private String _id;
         private String email;
         private String cnp;
         private String role;
         private String full_name;
 
         public String getId() {
-            return id;
+            return _id;
         }
 
         public void setId(String id) {
-            this.id = id;
+            this._id = id;
         }
 
         public String getEmail() {

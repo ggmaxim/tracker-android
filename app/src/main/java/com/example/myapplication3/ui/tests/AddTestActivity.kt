@@ -17,6 +17,7 @@ import com.example.myapplication3.model.response.users.DeleteUserResponse
 import com.example.myapplication3.model.response.users.UpdateUserResponse
 import com.example.myapplication3.network.apiclient.ApiClient
 import com.example.myapplication3.ui.DashboardActivity
+import com.example.myapplication3.ui.DashboardStaffActivity
 import com.example.myapplication3.utils.CommonUtills
 import retrofit2.Call
 import retrofit2.Callback
@@ -191,7 +192,7 @@ class AddTestActivity : AppCompatActivity() {
     }
 
     private fun  goToDashboard(){
-        startActivity(Intent(this, DashboardActivity::class.java))
+        startActivity(Intent(this, DashboardStaffActivity::class.java))
         finish()
     }
 

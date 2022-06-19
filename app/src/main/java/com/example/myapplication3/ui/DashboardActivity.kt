@@ -25,7 +25,6 @@ import java.util.*
 import android.view.MenuItem
 import android.R
 import androidx.appcompat.widget.SearchView
-import com.example.myapplication3.ui.tests.AddTestActivity
 import com.example.myapplication3.ui.users.EditUserActivity
 
 
@@ -54,6 +53,7 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
         setUpNewTrainerRecyclerView();
         getAllUsers();
         getPositiveUsers();
+        getContactUsers();
         setTabData();
         setToolBar()
     }
@@ -89,7 +89,7 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
     private fun getAllUsers(){
 
 
-        val apiCall = ApiClient.getService().getAllUsers();
+        val apiCall = ApiClient.getService().getAllUsers( false, false);
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 
@@ -118,7 +118,7 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
     private fun getPositiveUsers(){
 
 
-        val apiCall = ApiClient.getService().getPositiveUsers();
+        val apiCall = ApiClient.getService().getAllUsers( true, false);
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 
@@ -137,7 +137,7 @@ class DashboardActivity : AppCompatActivity(), AllUsersAdapter.SelectedConsumer 
     }
 
     private fun getContactUsers() {
-        val apiCall = ApiClient.getService().getContactUsers();
+        val apiCall = ApiClient.getService().getAllUsers( false, true);
 
         apiCall.enqueue(object : Callback<AllUsersResponse> {
 

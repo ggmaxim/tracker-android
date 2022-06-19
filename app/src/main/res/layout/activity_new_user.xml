@@ -26,13 +26,14 @@
             android:background="@color/purple_200"
             android:theme="@style/ToolBarStyle"
             >
+
             <TextView
                 android:layout_width="wrap_content"
-                android:text="USER MANAGEMENT"
+                android:layout_height="wrap_content"
+                android:text="BACK TO USERS LIST"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -41,66 +42,54 @@
         android:layout_width="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="30dp"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
         android:layout_height="wrap_content">
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Register New User"
+            android:textColor="@color/colorText"
+            android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             style="@style/AppTheme.App.TextInputLayout"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
+
             <EditText
                 android:id="@+id/edEmail"
                 android:layout_width="match_parent"
-                android:hint="Input Username"
-                android:textColor="@color/colorInputText"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_baseline_email_24"
                 android:drawablePadding="16dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:padding="16dp"
-                android:drawableStart="@drawable/ic_users"
-                android:inputType="text"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            style="@style/AppTheme.App.TextInputLayout"
-            android:layout_height="wrap_content"
-            app:passwordToggleContentDescription="password"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edPassword"
-                android:layout_width="match_parent"
-                android:hint="Password"
-                android:drawablePadding="16dp"
-                android:padding="16dp"
-                android:drawableStart="@drawable/ic_backspace"
-                android:inputType="textPassword"
-                android:textColor="@color/colorInputText"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/black"
+                android:visibility="visible"
+                tools:visibility="visible" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical">
 
 
             <RadioGroup
-                android:id="@+id/rgExpiryDate"
+                android:id="@+id/rgRole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -108,59 +97,87 @@
                 android:padding="1dp">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbPCR"
+                    android:id="@+id/rbAdmin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/pblue"
-                    android:text="1 Day"
                     android:onClick="onRadioButtonClicked"
+                    android:text="Admin"
                     android:theme="@style/RadioStyle" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbRapid"
+                    android:id="@+id/rbStaff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/pblue"
-                    android:text="3 Day"
                     android:onClick="onRadioButtonClicked"
-                    android:theme="@style/RadioStyle" />
-
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbOneWeek"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="@color/pblue"
-                    android:text="1 Weeks"
-                    android:onClick="onRadioButtonClicked"
+                    android:text="Staff"
                     android:theme="@style/RadioStyle" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbOneMonth"
+                    android:id="@+id/rbVisitor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/pblue"
-                    android:text="1 Monts"
                     android:onClick="onRadioButtonClicked"
+                    android:text="Visitor"
                     android:theme="@style/RadioStyle" />
+
+
             </RadioGroup>
         </LinearLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.App.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:id="@+id/edCNP"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawableStart="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="16dp"
+                android:hint="CNP"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/colorInputText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AppTheme.App.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:id="@+id/edFullName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:drawableStart="?android:attr/listChoiceIndicatorSingle"
+                android:drawablePadding="16dp"
+                android:hint="Full Name"
+                android:inputType="textPersonName|text"
+                android:padding="16dp"
+                android:textColor="@color/colorInputText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
-            android:id="@+id/btnNewUser"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:text="NEW USER"
+            android:layout_marginTop="50dp"
+            android:text="REGISTER"
             android:layout_height="60dp"/>
 
-
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

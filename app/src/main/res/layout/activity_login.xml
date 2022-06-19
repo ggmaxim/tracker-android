@@ -75,7 +75,7 @@
             android:layout_height="60dp"/>
 
         <LinearLayout
-            android:id="@+id/llNoAccount"
+            android:id="@+id/llChangePassword"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
@@ -83,11 +83,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Don't have an Account?"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text=" Sign Up"
+                android:text="Change password"
                 android:textStyle="bold"
                 android:textColor="@color/colorText"
                 android:layout_height="wrap_content"/>
